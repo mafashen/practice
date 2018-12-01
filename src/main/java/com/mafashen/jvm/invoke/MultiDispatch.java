@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.invoke;
 
 /**
  * 多分派

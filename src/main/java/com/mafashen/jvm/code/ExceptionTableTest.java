@@ -1,6 +1,5 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.code;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

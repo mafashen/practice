@@ -82,4 +82,9 @@ public class JsonTest {
 		System.out.println(replace);
 	}
 
+	@Test
+	public void testOffset(){
+		System.out.println(8192 << 11);
+	}
+
 }

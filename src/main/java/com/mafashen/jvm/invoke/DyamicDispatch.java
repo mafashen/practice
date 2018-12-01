@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.invoke;
 
 /**
  * 动态分派
@@ -13,14 +13,14 @@ public class DyamicDispatch {
 
 		@Override
 		protected void sayHello() {
-			System.out.println("hello man");
+			System.out.println("sayHello man");
 		}}
 	
 	static class Woman extends Human {
 
 		@Override
 		protected void sayHello() {
-			System.out.println("hello woman");
+			System.out.println("sayHello woman");
 		}}
 	
 	

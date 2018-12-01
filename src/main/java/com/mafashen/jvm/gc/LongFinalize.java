@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.gc;
 
 public class LongFinalize {
 

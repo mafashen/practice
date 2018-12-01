@@ -1,11 +1,14 @@
 package com.mafashen.java;
 
-import it.sauronsoftware.jave.*;
-
+import it.sauronsoftware.jave.AudioAttributes;
+import it.sauronsoftware.jave.Encoder;
+import it.sauronsoftware.jave.EncoderException;
+import it.sauronsoftware.jave.EncodingAttributes;
+import it.sauronsoftware.jave.FFMPEGLocator;
+import it.sauronsoftware.jave.VideoAttributes;
+import it.sauronsoftware.jave.VideoSize;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class JAVE {
 	public static void main(String[] args) throws EncoderException {

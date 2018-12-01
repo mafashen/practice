@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,12 +36,14 @@ public class HttpUtil {
 
 	public static HttpPost buildHttpPost(String uri, Map<String , String> headerMap , Map<String, Object> params) throws UnsupportedEncodingException {
 		HttpPost httpPost = new HttpPost(uri);
-		Header[] headers = new Header[headerMap.size()];
-		int i = 0;
-		for (Map.Entry<String, String> entry : headerMap.entrySet()) {
-			headers[i++] = new BasicHeader(entry.getKey(), entry.getValue());
+		if (headerMap != null){
+			Header[] headers = new Header[headerMap.size()];
+			int i = 0;
+			for (Map.Entry<String, String> entry : headerMap.entrySet()) {
+				headers[i++] = new BasicHeader(entry.getKey(), entry.getValue());
+			}
+			httpPost.setHeaders(headers);
 		}
-		httpPost.setHeaders(headers);
 		List<NameValuePair> formParams = new ArrayList<>();
 		if (params != null && !params.isEmpty()) {
 			for (String key : params.keySet()) {

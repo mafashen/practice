@@ -15,6 +15,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -91,7 +92,7 @@ public class MethodTest {
 		list.add(1);
 
 		//list.subList(0 ,6);
-		String[] sdgOuterShopIds = new String[]{"meituan_18170","meituan_18189","meituan_18288","meituan_18287","meituan_18164","meituan_18160","meituan_18138","meituan_18125","meituan_18321","meituan_18783","meituan_17047","meituan_6572","meituan_17019","meituan_18907","meituan_18911","meituan_18165","meituan_18918","meituan_18148","meituan_17110","meituan_18202","meituan_17327","meituan_17451","meituan_17112","meituan_17611","meituan_17554","meituan_18863","meituan_17193","meituan_17526","meituan_17529","meituan_17533","meituan_17508","meituan_17518","meituan_17796","meituan_17566","meituan_17510","meituan_17604","meituan_17543","meituan_17507","meituan_17619","meituan_17614","meituan_17609","meituan_17804","meituan_17701","meituan_17530","meituan_17726","meituan_17647","meituan_17644","meituan_17991","meituan_17928","meituan_18045","meituan_17917","meituan_17914","meituan_17910","meituan_17865","meituan_17662","meituan_17660","meituan_17658","meituan_17712","meituan_17707","meituan_18044","meituan_18053","meituan_17891","meituan_17988","meituan_17882","meituan_17861","meituan_18274","meituan_18275","meituan_18353","meituan_18273","meituan_18260","meituan_18241","meituan_18688","meituan_7635","2553684","2553636","2553619","2553637","2553662","2553665","2553663","2553862","2553661","2553659","2553946","2553778","2554944","2553779","2554037","2553680","2553951","2553688","2553952","2553692","2553691","2553693","2553686"};
+		String[] sdgOuterShopIds = new String[]{};
 		System.out.println(sdgOuterShopIds.length);
 		for (String sdgOuterShopId : sdgOuterShopIds) {
 			System.out.println(sdgOuterShopId);
@@ -194,7 +195,7 @@ public class MethodTest {
 
 	@Test
 	public void testSplit(){
-		String str = "{(2281812)},{(2281811)},{(2281799)},{(2281798)},{(2281788)},{(2281782)},{(2281780)},{(2281779)},{(2281777)},{(2281774)},{(2281772)},{(2281771)},{(2281767)},{(2281766)},{(2281764)},{(2281763)},{(2281733)},{(2281726)},{(2281725)},{(2281714)},{(2281706)},{(2281695)},{(2281693)},{(2281687)},{(2281683)},{(2281781)},{(1073127)},{(1073215)},{(1073216)},{(157204725)},{(157204726)},{(157204727)},{(157204761)},{(157205142)},{(1073068)},{(1073077)},{(1073104)},{(1073110)},{(1073678)},{(157204728)},{(157204764)},{(157204768)},{(1073602)},{(1073518)},{(1073517)},{(1073416)},{(1073407)},{(1073420)},{(1073624)},{(1073535)},{(1073626)},{(1073452)},{(1073508)},{(1073448)},{(1073410)},{(1073537)},{(1073658)},{(157205105)},{(157205109)},{(157205112)},{(157205114)},{(157205886)},{(157205887)},{(157205117)},{(157205118)},{(157205892)},{(157249224)},{(157205899)},{(157205121)},{(157205133)},{(157205134)},{(157205136)},{(157205918)},{(157205139)},{(157205925)},{(1074857)},{(1074859)},{(1074849)},{(1074904)},{(1075483)},{(1075485)},{(1073330)},{(1073346)},{(1073351)},{(1073356)},{(1073372)},{(1075655)},{(1075665)},{(157451739)},{(157451744)},{(157451753)},{(157493830)},{(157493833)},{(157493836)},{(157493837)},{(157493839)},{(157493843)},{(157493853)},{(157493929)},{(157493934)},{(157493937)},{(157493938)},{(157493939)},{(157494038)},{(157494039)},{(157494040)},{(157494056)},{(157494060)},{(157494061)},{(157494062)},{(157494063)},{(157512220)},{(157512221)},{(157512222)},{(157512223)},{(157512224)},{(157512225)},{(157512226)},{(157512227)},{(157512228)},{(157512229)},{(157512237)},{(157512347)},{(157525215)},{(157525216)},{(157525219)},{(157525220)},{(157525222)},{(157525223)},{(157525225)},{(157525226)},{(157525227)},{(157525228)},{(157525229)},{(157525230)},{(157525676)},{(157526624)},{(157526631)},{(157526632)},{(157526634)},{(157526635)},{(157526637)},{(157526638)},{(157526640)},{(157526641)},{(157526642)},{(157526643)},{(157526644)},{(157526648)},{(157526653)},{(157526654)},{(157526655)},{(157526656)},{(157526658)},{(157526660)},{(157526986)},{(157526992)},{(157526993)},{(157526995)},{(157526996)},{(157526997)},{(157526998)},{(157526999)},{(157527000)},{(157527005)},{(157527090)},{(157527091)},{(157527094)},{(157527095)},{(157527097)},{(157527099)},{(157527100)},{(157527101)},{(157527104)},{(157527105)},{(157527106)},{(157527107)},{(157527109)},{(157527117)},{(157527119)},{(156974109)},{(156974108)},{(156974107)},{(156974105)},{(156974118)},{(156974101)},{(156974098)},{(156974097)},{(156974144)},{(156974142)},{(156974141)},{(156974129)},{(156974134)},{(156974131)},{(156983424)},{(156983409)},{(156983415)},{(157993376)},{(157963712)},{(157963755)},{(157963757)},{(158168924)},{(157983453)},{(158171431)},{(156983435)},{(158172874)},{(158172891)},{(156983433)},{(157984304)},{(157993288)},{(158173173)},{(157993159)},{(157993291)},{(157993163)},{(157993181)},{(157993191)},{(157526636)},{(157526639)},{(158909626)},{(158729393)},{(158910581)},{(158908459)},{(158725360)},{(158908466)},{(158729318)},{(158729320)}";
+		String str = "";
 		//str.replace("{" , "");
 		String[] strings = str.split("[^0-9]+");
 		for (String string : strings) {
@@ -210,7 +211,11 @@ public class MethodTest {
 		map.put("subject" , "xxx品牌xxx门店当面付扫码消费");
 		map.put("charset" , "utf-8");
 		map.put("seller_email" , "fifaun6461@sandbox.com");
-		map.put("sign" , "imQw5+azkeVRfKehpQgoY4un0GrkRIOYp1mS/aI09AYk9BEwxMx/e0xy+kcjBXVQKlOVytVaMh0Qupynfh7Qz14+urOaiMEC603uydJemYh8678f7MMBV0QwqgNpXaBswjzr+xpWCOYT9IEtAiiLB8L+YYELQqk9zUcdnCpVdNQ+p6fMm0+KxbTNJrNSStc0gtxKIQ28HXRnGPZiNjUbo0Rtxw2YonrC4SAqevQNRguQ3aAKQO0WBDBLMGImRme7HRbqhzcFCv10ZBs6pYIY6hRQ1QkMKb9Hz0e/3M4t/bZL9uVs/ZCpNh6xOaWvRkrPdt10S0dJhl6NyezAyHoE/g==");
+		map.put("sign" , "imQw5+azkeVRfKehpQgoY4un0GrkRIOYp1mS/aI09AYk9BEwxMx/" +
+				"e0xy+kcjBXVQKlOVytVaMh0Qupynfh7Qz14+urOaiMEC603uydJemYh8678f7MMBV0Qwqg" +
+				"NpXaBswjzr+xpWCOYT9IEtAiiLB8L+YYELQqk9zUcdnCpVdNQ+p6fMm0+KxbTNJrNSStc0gtxK" +
+				"IQ28HXRnGPZiNjUbo0Rtxw2YonrC4SAqevQNRguQ3aAKQO0WBDBLMGImRme7HRbqhzcFCv10ZBs6" +
+				"pYIY6hRQ1QkMKb9Hz0e/3M4t/bZL9uVs/ZCpNh6xOaWvRkrPdt10S0dJhl6NyezAyHoE/g==");
 		System.out.println(map.size());
 		System.out.println(map.keySet());
 		System.out.println(map.values());
@@ -222,7 +227,7 @@ public class MethodTest {
 		List<Integer> outer = Arrays.asList();
 
 		System.out.println("内部多出" + CollectionUtils.subtract(inner , outer));
-		System.out.println("外部多出" + CollectionUtils.subtract(outer , inner));
+		System.out.println("外部多出" + CollectionUtils.subtract(inner , outer).size());
 	}
 
 	@Test

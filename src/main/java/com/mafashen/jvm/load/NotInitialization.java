@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.load;
 
 public class NotInitialization {
 
@@ -7,9 +7,9 @@ public class NotInitialization {
 		System.out.println(SubClass.value);
 		SuperClass[] superClasses = new SuperClass[10];
 /*
-hello world
-[Loaded com.mafashen.jvm.SuperClass from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
-[Loaded com.mafashen.jvm.SubClass from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
+sayHello world
+[Loaded com.mafashen.jvm.load.SuperClass from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
+[Loaded com.mafashen.jvm.load.SubClass from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
 SpuerClass init
 123
 */
@@ -20,7 +20,7 @@ SpuerClass init
  * 被动使用类字段演示,常量在编译阶段会存入调用类的常量池,本质上并没有直接引用到定义常量的类,因此不会触发定义常量的类的初始化
  */
 class ConstClass{
-	public static final String HELLOWORLD = "hello world";
+	public static final String HELLOWORLD = "sayHello world";
 	
 	static {
 		System.out.println("ConstClass init");

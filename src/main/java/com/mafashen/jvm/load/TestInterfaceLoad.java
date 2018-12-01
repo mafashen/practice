@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.load;
 
 public class TestInterfaceLoad {
 
@@ -20,10 +20,10 @@ interface SubInterface extends SuperInterface1, SuperInterface2{
 }
 
 /*
-[Loaded com.mafashen.jvm.SuperInterface1 from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
-[Loaded com.mafashen.jvm.SuperInterface2 from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
-[Loaded com.mafashen.jvm.SubInterface from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
-[Loaded com.mafashen.jvm.SubImpl from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
+[Loaded com.mafashen.jvm.load.SuperInterface1 from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
+[Loaded com.mafashen.jvm.load.SuperInterface2 from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
+[Loaded com.mafashen.jvm.load.SubInterface from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
+[Loaded com.mafashen.jvm.load.SubImpl from file:/Users/mafashen/IdeaProjects/practice/target/classes/]
 Sub class init...
  */
 class SubImpl implements SubInterface{

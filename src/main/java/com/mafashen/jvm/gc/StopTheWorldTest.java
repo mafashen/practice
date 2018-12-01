@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.gc;
 
 import java.util.HashMap;
 import javax.servlet.jsp.JspFactory;

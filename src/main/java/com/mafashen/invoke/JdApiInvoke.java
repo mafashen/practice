@@ -69,14 +69,7 @@ public class JdApiInvoke {
 
 		Map<String, Object> param = new HashMap<>();
 		param.put("fields", Arrays.asList("BRAND_ID", "BRAND_NAME", "BRAND_STATUS"));
-//		param.put("brandName", "香满楼");
-//		param.put("brandName", "太粮");
-//		param.put("brandName", "鸿英");
-//		param.put("brandName", "燕塘");
-//		param.put("brandName", "众天");
-//		param.put("brandName", "禾泱泱");
-//		param.put("brandName", "湖之头村");
-		param.put("brandName", "趣园");
+		param.put("brandName", "李锦记");
 		param.put("pageSize" , 50);
 		param.put("pageNo" , 1);
 		buildProtocolAndRequest("pms/queryPageBrandInfo" , param);
@@ -93,7 +86,7 @@ public class JdApiInvoke {
 		Protocol protocol = new Protocol();
 		protocol.setApp_key("a2eaebefa579489f91e4e953f268781e");
 		protocol.setApp_secret("1b893150fa884e7f86ec4762cbf92abb");
-		protocol.setToken("68bc2df6-7dfc-472c-88ea-16d3afab6db1");
+		protocol.setToken("0e5a9e36-0740-4a8e-851e-972e56e47b97");
 
 		param.put("pageSize", 50);
 		protocol.setParam(param);
@@ -108,9 +101,11 @@ public class JdApiInvoke {
 
 			return result;
 		} catch (Exception e) {
-//			e.printStackTrace();
-			return buildProtocolAndRequest(API, param);
+			e.printStackTrace();
+//			return buildProtocolAndRequest(API, param);
+			throw new RuntimeException(e);
 		}
+
 	}
 
 	public static List<CategoryInfo> parse(String result){

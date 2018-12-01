@@ -5,7 +5,7 @@
   <groupId>com.sdg</groupId>
   <artifactId>videotest</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>videotest</name>
   <url>http://maven.apache.org</url>
@@ -60,6 +60,11 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.3.2</version>
     </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
@@ -274,8 +279,8 @@
         <version>2.5.1</version>
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>

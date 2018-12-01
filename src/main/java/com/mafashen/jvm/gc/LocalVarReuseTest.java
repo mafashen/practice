@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.gc;
 
 /**
  * 局部变量表中的变量也是重要的垃圾回收根节点,只要被局部变量表中直接或间接引用的对象都是不会被回收的.

@@ -1,4 +1,4 @@
-package com.mafashen.jvm;
+package com.mafashen.jvm.gc;
 
 /**
  * 局部变量表Slot复用对垃圾收集的影响

@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--<bean class="com.mafashen.spring.BeanTest" name="beanTest, beanTest2" autowire="byName">-->
 
@@ -16,7 +17,45 @@
         <!--<property name="refA" ref="circleRefA"/>-->
     <!--</bean>-->
 
-    <bean id="testBean" class="com.mafashen.spring.factory.method.FactoryMethodTest" factory-method="factoryMethod">
-        <meta key="metaStr" value="metaValue" />
+    <!--<bean id="testBean" class="com.mafashen.spring.factory.method.FactoryMethodTest" factory-method="factoryMethod">-->
+        <!--<meta key="metaStr" value="metaValue" />-->
+    <!--</bean>-->
+
+    <bean id="dateT" class="com.mafashen.spring.custom.editor.DateTypeDITest">
+        <property name="date">
+            <value>2018-02-01</value>
+        </property>
     </bean>
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date" value="com.mafashen.spring.custom.editor.DatePropertyEditor" />
+            </map>
+        </property>
+        <!--<property name="propertyEditorRegistrars">-->
+            <!--<list>-->
+                <!--<bean class="com.mafashen.spring.custom.editor.DatePropertyEditorRegistrar"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    </bean>
+
+    <bean class="com.mafashen.spring.custom.processor.SoutBeanPostProcessor" />
+
+    <bean id="testEventListener" class="com.mafashen.spring.event.TestEventListener" />
+
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.mafashen.spring.custom.convert.String2DateConverter" />
+            </list>
+        </property>
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean class="com.mafashen.spring.aop.AdvisorBean" />
+    <bean class="com.mafashen.spring.aop.BizBean" />
+
+    <context:load-time-weaver aspectj-weaving="on"/>
+
+    <bean id="aspectjBean" class="com.mafashen.spring.aop.AspectJTest" />
 </beans>

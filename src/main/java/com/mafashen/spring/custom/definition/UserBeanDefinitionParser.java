@@ -1,4 +1,4 @@
-package com.mafashen.spring.custom;
+package com.mafashen.spring.custom.definition;
 
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;

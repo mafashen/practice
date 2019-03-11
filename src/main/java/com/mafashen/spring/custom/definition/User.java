@@ -1,4 +1,4 @@
-package com.mafashen.spring.custom;
+package com.mafashen.spring.custom.definition;
 
 import lombok.Getter;
 import lombok.Setter;

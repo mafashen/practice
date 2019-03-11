@@ -119,8 +119,7 @@ public class JdApiInvoke {
 
 					if (CollectionUtils.isNotEmpty(retList)){
 						for (int i = 0; i < retList.size(); i++) {
-							JSONObject jo = retList.getJSONObject(i);
-							CategoryInfo categoryInfo = jo.toJavaObject(CategoryInfo.class);
+							CategoryInfo categoryInfo = retList.getObject(i,CategoryInfo.class);
 							if (categoryInfo != null){
 								cats.add(categoryInfo);
 							}

@@ -2,7 +2,7 @@ package com.mafashen.sdg;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.context.annotation.ComponentScan;
+//import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-@ComponentScan(basePackages = "com.sdg")
+//@ComponentScan(basePackages = "com.sdg")
 public class Cast {
 
 	public static List<OuterCategory> cast(List<MeituanCategory> meituanCategories){

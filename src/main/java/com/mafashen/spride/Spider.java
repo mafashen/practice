@@ -18,7 +18,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
-import org.springframework.util.StreamUtils;
+//import org.springframework.util.StreamUtils;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
@@ -84,7 +84,7 @@ public class Spider {
 					if (!file.exists())
 						file.createNewFile();
 					FileOutputStream fos = new FileOutputStream(file);
-					StreamUtils.copy(inputStream, fos);
+//					StreamUtils.copy(inputStream, fos);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

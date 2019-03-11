@@ -61,11 +61,12 @@ public class WeakRef {
 		User u = new User(1, "mafashen");
 		softQueue = new ReferenceQueue<>();
 		UserWeakReference userSoftReference = new UserWeakReference(u , softQueue);
+		//SoftReference,WeakReference,PhantomReference只在没有强引用对象指向引用的对象时才有效
+		//不将u设为null,不会加入引用队列中,即WeakReference没有生效
 		u = null;
 
 		System.out.println(userSoftReference.get());
 		System.gc();
 		System.out.println("After GC : " + userSoftReference.get());
-
 	}
 }

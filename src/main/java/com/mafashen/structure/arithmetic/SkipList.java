@@ -1,8 +1,6 @@
-package com.mafashen.java.arithmetic;
+package com.mafashen.structure.arithmetic;
 
 import java.util.Random;
-
-		import java.util.Random;
 
 /**
  * 跳表的一种实现方法。

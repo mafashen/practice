@@ -1,4 +1,4 @@
-package com.mafashen.java.arithmetic;
+package com.mafashen.structure.arithmetic;
 
 /**
  * @author mafashen

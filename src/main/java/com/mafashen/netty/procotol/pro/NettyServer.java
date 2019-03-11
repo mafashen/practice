@@ -14,6 +14,9 @@ import com.mafashen.netty.procotol.pro.codec.NettyMessageEncoder;
 import com.mafashen.netty.procotol.pro.handler.HandShakeResponseHandler;
 import com.mafashen.netty.procotol.pro.handler.HeartResponseHandler;
 
+/**
+ * 基于Netty的简单通信服务,包含心跳检测机制
+ */
 public class NettyServer {
 
 	public void bind(String ip, int port){

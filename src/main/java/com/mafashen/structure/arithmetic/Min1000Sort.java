@@ -1,4 +1,4 @@
-package com.mafashen.java;
+package com.mafashen.structure.arithmetic;
 
 import java.util.Arrays;
 import java.util.Random;

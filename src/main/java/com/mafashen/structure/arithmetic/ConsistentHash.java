@@ -13,6 +13,7 @@ import java.util.Set;
 
 
 /**
+ * 一致性hash算法
  * @author mafashen
  * created on 2019/3/10.
  */

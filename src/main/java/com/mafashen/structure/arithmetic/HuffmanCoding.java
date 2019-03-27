@@ -7,6 +7,7 @@ import java.util.Map;
 import lombok.Data;
 
 /**
+ * 哈夫曼编码
  * @author mafashen
  * created on 2019/3/18.
  */

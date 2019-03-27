@@ -98,13 +98,7 @@ public class DynamicPlanning {
 		return ret.length;
 	}
 
-	public static void main(String[] args) {
-//		System.out.println(moneyChange(Arrays.asList(1, 2, 5, 10,20,50,100), 103));
-//		countMoneyMin(new int[]{1, 2, 5, 10, 20, 50, 100}, 103);
-//		moneyChange2(new int[]{1, 2, 5, 10, 20, 50, 100}, 68);
-		moneyChange3(new int[]{1, 2, 5, 10, 20, 50, 100}, 68);
-	}
-
+	//网上的实现
 	public static int countMoneyMin(int[] moneyItems, int resultMemory) {
 		if (null == moneyItems || moneyItems.length < 1) {
 			return -1;
@@ -163,4 +157,60 @@ public class DynamicPlanning {
 		return minNum;
 	}
 
+	//莱文斯坦距离问题
+	//m[i][j] = min(m[i-1][j-1], m[i-1][j]+1, m[i][j-1]+1) (a[i]=b[j])
+	//			min(m[i-1][j-1]+1, m[i-1][j]+1, m[i][j-1]+1) (a[i]!=b[j])
+	public static int LevenshteinDistance(char[] a, int n, char[] b, int m){
+		int[][] minDist = new int[n][m];
+
+		//初始化边界
+		for (int i = 0; i < m; i++) {
+			if (a[0] == b[i]){
+				minDist[0][i] = i;
+			}else if(i > 0){
+				minDist[0][i] = minDist[0][i-1]+1;
+			}else{
+				minDist[0][i] = 1;
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			if (a[i] == b[i]){
+				minDist[i][0] = i;
+			}else if (i > 0){
+				minDist[i][0] = minDist[i-1][0] + 1;
+			}else{
+				minDist[i][0] = 1;
+			}
+		}
+
+		for (int i = 1; i < n; i++) {
+			for (int j = 1; j < m; j++) {
+				if (a[i] == b[j]){
+					minDist[i][j] = min(minDist[i-1][j-1], minDist[i-1][j]+1, minDist[i][j-1]+1);
+				}else{
+					minDist[i][j] = min(minDist[i-1][j-1]+1, minDist[i-1][j]+1, minDist[i][j-1]+1);;
+				}
+			}
+		}
+		System.out.println(minDist[n-1][m-1]);
+		return minDist[n-1][m-1];
+	}
+
+	public static int min(int ... arr){
+		int min = arr[0];
+		for (int i : arr) {
+			if (min > i){
+				min = i;
+			}
+		}
+		return min;
+	}
+
+	public static void main(String[] args) {
+//		System.out.println(moneyChange(Arrays.asList(1, 2, 5, 10,20,50,100), 103));
+//		countMoneyMin(new int[]{1, 2, 5, 10, 20, 50, 100}, 103);
+//		moneyChange2(new int[]{1, 2, 5, 10, 20, 50, 100}, 68);
+//		moneyChange3(new int[]{1, 2, 5, 10, 20, 50, 100}, 68);
+		LevenshteinDistance("mitcm".toCharArray(), 5, "mtacnu".toCharArray(), 6);
+	}
 }

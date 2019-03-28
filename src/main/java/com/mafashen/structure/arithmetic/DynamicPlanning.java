@@ -206,11 +206,86 @@ public class DynamicPlanning {
 		return min;
 	}
 
+	public static int max(int ... arr){
+		int max = arr[0];
+		for (int i : arr) {
+			if (max < i){
+				max = i;
+			}
+		}
+		return max;
+	}
+
+	//最长公共子串
+	//max[i][j]=max(max[i-1][j-1]+1, max[i-1][j], max[i][j-1]) a[i]=b[j]
+	//max[i][j] = max(max[i-1][j-1], max[i-1][j], max[i][j-1]) a[i]!=b[j]
+	public static int maxCommonSubString(char[] a, int n, char[] b, int m){
+		int[][] max = new int[n][m];
+
+		//初始化边界
+		for (int i = 0; i < m; i++) {
+			if (a[0] == b[i]){
+				max[0][i] = 1;
+			}else if(i > 0 ){
+				max[0][i] = max[0][i-1];
+			}else
+				max[0][i] = 0;
+		}
+
+		for (int i = 0; i < n; i++) {
+			if (a[i] == b[0]){
+				max[i][0] = 1;
+			}else if (i > 0){
+				max[i][0] = max[i-1][0];
+			}else{
+				max[i][0] = 0;
+			}
+		}
+
+		for (int i = 1; i < n; i++) {
+			for (int j = 1; j < m; j++) {
+				if (a[i] == b[j]){
+					max[i][j] = max(max[i-1][j-1]+1, max[i-1][j], max[i][j-1]);
+				}else{
+					max[i][j] = max(max[i-1][j-1], max[i-1][j], max[i][j-1]);
+				}
+			}
+		}
+		System.out.println("maxCommonSubString = " + max[n-1][m-1]);
+		return max[n-1][m-1];
+	}
+
+	//最长子序列
+	//max[i] = max(max[0-i-1])+1
+	public static int maxLengthSubSequence(int[] a, int n){
+		int[] max = new int[n];
+		max[0] = 1;
+
+		for(int i = 1; i < n; i++){
+			int max0 = 0;
+			for(int j=0; j < i; j++){
+				if(a[i] > a[j]){
+					if(max[j] > max0){
+						max0 = max[j];
+					}
+				}
+			}
+			max[i] = max0+1;
+		}
+		for(int i=0; i<n; i++){
+			System.out.print(max[i]);
+		}
+		System.out.println();
+		return max[n-1];
+	}
+
 	public static void main(String[] args) {
 //		System.out.println(moneyChange(Arrays.asList(1, 2, 5, 10,20,50,100), 103));
 //		countMoneyMin(new int[]{1, 2, 5, 10, 20, 50, 100}, 103);
 //		moneyChange2(new int[]{1, 2, 5, 10, 20, 50, 100}, 68);
 //		moneyChange3(new int[]{1, 2, 5, 10, 20, 50, 100}, 68);
-		LevenshteinDistance("mitcm".toCharArray(), 5, "mtacnu".toCharArray(), 6);
+//		LevenshteinDistance("mitcm".toCharArray(), 5, "mtacnu".toCharArray(), 6);
+//		maxCommonSubString("mitcnm".toCharArray(), 6, "mtacnu".toCharArray(), 6);
+		maxLengthSubSequence(new int[]{2, 9, 3, 6, 5, 1, 7}, 7);
 	}
 }

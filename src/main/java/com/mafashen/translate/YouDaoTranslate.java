@@ -1,3 +1,4 @@
+package com.mafashen.translate;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,6 +12,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,16 +29,19 @@ import org.apache.http.util.EntityUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+/**
+ * 有道翻译
+ */
 public class YouDaoTranslate {
 
-	private final static String url = "pro://openapi.youdao.com/api";
-	private final static String appKey = "4c220d03c9f4198c";
-	private final static String secret = "0Biu6sA1ss4KxYSmecCh6RFCslkikgTY";
+	private final String url = "pro://openapi.youdao.com/api";
+	private final String appKey = "4c220d03c9f4198c";
+	private final String secret = "0Biu6sA1ss4KxYSmecCh6RFCslkikgTY";
 
-	private final static String basePath = "/Users/mafashen/Documents/JDKSRC/java";
-	private final static String outputPath = "/Users/mafashen/Documents/translate/";
+	private final String basePath = "/Users/mafashen/Documents/JDKSRC/java";
+	private final String outputPath = "/Users/mafashen/Documents/translate/";
 
-	public static String translate(String meta) {
+	public String translate(String meta) {
 		String translate = null;
 
 		CloseableHttpClient httpClient = null;
@@ -86,7 +91,7 @@ public class YouDaoTranslate {
 		return translate;
 	}
 
-	private static String md5( String q , String salt){
+	private String md5( String q , String salt){
 		if(appKey == null){
 			return null;
 		}
@@ -131,32 +136,54 @@ public class YouDaoTranslate {
 				 BufferedReader bis = new BufferedReader(fis);
 				 FileWriter fw = new FileWriter(outputFile);
 				 BufferedWriter bw = new BufferedWriter(fw);
-				 ) {
+			) {
 				String line = null;
 				StringBuilder sb = new StringBuilder();
+				Stack codeStack = new Stack();
+				Integer c = 0;
 				do {
 					line = bis.readLine();
 					if(StringUtils.isNotBlank(line)){
-						if (line.contains("*/")){
-							String q = sb.toString().replace("*", "")
-									.replace("&quot", "")
-									.replace("<p>", "")
-									.replace("<em>", "")
-									.replace("<pre>", "")
-									.replace("<pre>", "")
-									.replace("<tt>", "")
-									.replace("{@link #", "")
-									.replace("}", "")
-									.replace("/", "");
+						if (line.trim().startsWith("/*") || line.trim().startsWith("/**")){
+							fw.write(line + "\n");
+						}
+						else if (line.endsWith("*/")){
+							String q = process(sb);
 
-							String translate = translate(q);
-							if (translate != null){
-								fw.write("/**\n\t" + translate + "\n*/\n");
-								sb.delete(0, sb.length());
-							}
+//							int turn = q.length() / 500 + 1;
+//							int len = q.length();
+//							for (int i = 0; i < turn ; i++) {
+//								String translate = translate(q.substring(i * 500 , (i+1)*500 > len ? len : (i+1)*500));
+//								if (translate != null){
+//									fw.write( translate + "\n*/\n");
+//									sb.delete(0, sb.length());
+//								}else{
+//									fw.write("\n*/\n");
+//								}
+//							}
+							fw.write(line + "\n");
 						}
 						else if (line.contains("*") && !line.contains("import")){
-							sb.append(line);
+							if (line.endsWith("{") || (!line.contains("@link") && line.contains("{"))){
+								codeStack.push(c);
+							}
+							if (line.endsWith("}") && !line.contains("@link")){
+								codeStack.pop();
+							}
+							if (codeStack.empty()){
+								sb.append(line);
+								if (line.endsWith(".")){
+									String q = process(sb);
+									String translate = translate(q);
+									if (translate != null){
+										fw.write("\t" + translate +"\n");
+										sb.delete(0, sb.length());
+									}
+									sb.delete(0, sb.length());
+								}
+							}else{
+								fw.write(line + "\n");
+							}
 						}
 						else{
 							fw.write(line + "\n");
@@ -172,14 +199,26 @@ public class YouDaoTranslate {
 	}
 
 	public static void main(String[] args) {
-//		new YouDaoTranslate().readFile("util/concurrent/locks/AbstractQueuedSynchronizer.java");
-		if (args != null && args.length > 0){
-			String translate = translate(args[0]);
-			if (StringUtils.isNotBlank(translate))
-				System.out.println(translate);
-		}else{
-			System.out.println("input string which need to be translated...");
-		}
+		new YouDaoTranslate().readFile("util/concurrent/locks/AbstractQueuedSynchronizer.java");
+
+	}
+
+	private String process(StringBuilder builder){
+		String q = builder.toString().replace("*", "")
+				.replace("&quot", "")
+				.replace("/" , "")
+				.replace("<h3>" , "")
+				.replace("<ul>" , "")
+				.replace("<li>" , "")
+				.replace("<h4>" , "")
+				.replace("<p>", "")
+				.replace("<em>", "")
+				.replace("<pre>", "")
+				.replace("<pre>", "")
+				.replace("<tt>", "")
+				.replace("{ @link #", "")
+				.replace("}", "");
+		return q;
 	}
 
 	@Getter

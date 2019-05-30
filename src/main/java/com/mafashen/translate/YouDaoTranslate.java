@@ -34,12 +34,12 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class YouDaoTranslate {
 
-	private final String url = "pro://openapi.youdao.com/api";
+	private final String url = "http://openapi.youdao.com/api";
 	private final String appKey = "4c220d03c9f4198c";
 	private final String secret = "0Biu6sA1ss4KxYSmecCh6RFCslkikgTY";
 
-	private final String basePath = "/Users/mafashen/Documents/JDKSRC/java";
-	private final String outputPath = "/Users/mafashen/Documents/translate/";
+	private final String basePath = "/Users/mafashen/Documents/JDKSRC/java/util/concurrent/locks";
+	private final String outputPath = "/Users/mafashen/Documents/";
 
 	public String translate(String meta) {
 		String translate = null;
@@ -199,7 +199,7 @@ public class YouDaoTranslate {
 	}
 
 	public static void main(String[] args) {
-		new YouDaoTranslate().readFile("util/concurrent/locks/AbstractQueuedSynchronizer.java");
+		new YouDaoTranslate().readFile("AbstractQueuedSynchronizer.java");
 
 	}
 

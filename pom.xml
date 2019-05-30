@@ -198,11 +198,16 @@
       <type>pom</type>
     </dependency>
 
-    <dependency>
-      <groupId>com.sdg</groupId>
-      <artifactId>zsearch-common</artifactId>
-      <version>1.1.2-SNAPSHOT</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>com.sdg</groupId>-->
+      <!--<artifactId>zsearch-common</artifactId>-->
+      <!--<version>1.1.2-SNAPSHOT</version>-->
+      <!--<exclusions>-->
+        <!--<exclusion>-->
+
+        <!--</exclusion>-->
+      <!--</exclusions>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>com.shangou</groupId>
@@ -295,6 +300,28 @@
       <version>7.0</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-core -->
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-core</artifactId>
+      <version>1.5.1</version>
+    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>ch.qos.logback</groupId>-->
+      <!--<artifactId>logback-core</artifactId>-->
+      <!--<version>1.1.7</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>ch.qos.logback</groupId>-->
+      <!--<artifactId>logback-classic</artifactId>-->
+      <!--<version>1.1.7</version>-->
+    <!--</dependency>-->
+
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>2.0.12</version>
+    </dependency>
   </dependencies>
 
   <build>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d [%t] %-5p %c{2}:%L - %m%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="PROJECT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/Users/mafashen/IdeaProjects/practice/main.log</file>
+		<!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+			<!--<fileNamePattern>/Users/mafashen/IdeaProjects/practice/main.log.%d{yyyy-MM-dd}</fileNamePattern>-->
+			<!--<maxHistory>30</maxHistory>-->
+		<!--</rollingPolicy>-->
+		<encoder>
+			<pattern>%d [%t] %-5p %c{2}:%L - %m%n</pattern>
+		</encoder>	
+	</appender>
+	
+	<root level="warn">
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+
+	<!--以下设置一些框架日志级别 -->
+	<logger name="org.apache.zookeeper">
+		<level value="warn" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="com.alibaba.dubbo">
+		<level value="warn" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.springframework">
+		<level value="warn" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.apache">
+		<level value="warn" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="io.netty">
+		<level value="warn" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.I0Itec">
+		<level value="warn" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.dozer">
+		<level value="warn" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+</configuration>

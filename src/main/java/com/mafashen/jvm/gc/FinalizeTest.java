@@ -1,14 +1,7 @@
 package com.mafashen.jvm.gc;
 
-public class CanReliveObj {
-	private static CanReliveObj obj ;
-
-	@Override
-	protected void finalize() throws Throwable {
-		super.finalize();
-		System.out.println("CanReliveObj finalize method called ");
-		obj = this;
-	}
+public class FinalizeTest {
+	private static FinalizeTest obj ;
 
 	/*
 	finalize方法只会被调用一次,是对象自求的最后机会
@@ -29,8 +22,15 @@ public class CanReliveObj {
 		如果对象这时候还没有逃脱，那基本上它就真的被回收了。
 		不推荐使用finalize方法,finalize低优先级,调用时间不确定,再try-finally中释放资源
 	 */
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		System.out.println("CanReliveObj finalize method called ");
+		obj = this;
+	}
+
 	public static void main(String[] args) throws InterruptedException {
-		obj = new CanReliveObj();
+		obj = new FinalizeTest();
 		obj = null;
 		System.gc();
 		Thread.sleep(1000);

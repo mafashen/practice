@@ -1,4 +1,4 @@
-package com.mafashen.spride;
+package com.mafashen.java;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,7 +21,6 @@ import org.junit.Test;
 //import org.springframework.util.StreamUtils;
 
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 public class WebClientSpider {

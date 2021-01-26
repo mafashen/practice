@@ -2,8 +2,11 @@ package com.mafashen.jvm.load;
 
 public class TestInterfaceLoad {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		SubInterface sub = new SubImpl();
+		while (true){
+			Thread.sleep(100);
+		}
 	}
 }
 

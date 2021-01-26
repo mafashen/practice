@@ -132,8 +132,11 @@ public class JHTTP {
 
 	public static void main(String[] args) {
 		try {
-			new JHTTP("/Users/mafashen/", 1314).start();
-		} catch (IOException e) {
+//			new JHTTP("/Users/mafashen/", 1314).start();
+			int[][] a = new int[3][];
+
+			a[1][2] = 0;
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

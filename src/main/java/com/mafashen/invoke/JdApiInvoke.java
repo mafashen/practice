@@ -48,11 +48,11 @@ public class JdApiInvoke {
 			try{
 				List<CategoryInfo> cats = parse(result);
 				if (CollectionUtils.isNotEmpty(cats)){
-//					categoryInfos.addAll(cats);
 					for (CategoryInfo cat : cats) {
 						if (1 == cat.getCategoryStatus()){
 							categoryInfos.add(cat);
 							System.out.println(cat);
+							Thread.sleep(200);
 							getJdCat(cat.getId() , categoryInfos);
 						}
 					}
@@ -86,7 +86,7 @@ public class JdApiInvoke {
 		Protocol protocol = new Protocol();
 		protocol.setApp_key("a2eaebefa579489f91e4e953f268781e");
 		protocol.setApp_secret("1b893150fa884e7f86ec4762cbf92abb");
-		protocol.setToken("0e5a9e36-0740-4a8e-851e-972e56e47b97");
+		protocol.setToken("72d6f21e-ec2a-4125-b297-374a3265f563");
 
 		param.put("pageSize", 50);
 		protocol.setParam(param);
@@ -113,7 +113,8 @@ public class JdApiInvoke {
 		try {
 			if (StringUtils.isNotBlank(result)){
 				JSONObject jsonObject = JSONObject.parseObject(result);
-				JSONObject data = jsonObject.getJSONObject("data");
+				String dataStr = jsonObject.getString("data");
+				JSONObject data = JSONObject.parseObject(dataStr);
 				if (data != null){
 					JSONArray retList = data.getJSONArray("result");
 

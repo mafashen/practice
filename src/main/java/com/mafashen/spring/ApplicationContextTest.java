@@ -1,5 +1,6 @@
 package com.mafashen.spring;
 
+import com.mafashen.spring.aop.AService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,7 +22,10 @@ public class ApplicationContextTest {
 //		BizBean bizBean = ctx.getBean(BizBean.class);
 //		bizBean.test();
 
-		AspectJTest aspectjBean = ctx.getBean("aspectjBean", AspectJTest.class);
-		aspectjBean.test();
+//		AspectJTest aspectjBean = ctx.getBean("aspectjBean", AspectJTest.class);
+//		aspectjBean.test();
+
+		AService aService = ctx.getBean(AService.class);
+		aService.doSomeThing();
 	}
 }

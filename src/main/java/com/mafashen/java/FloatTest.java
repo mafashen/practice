@@ -58,4 +58,15 @@ public class FloatTest {
 		String str = "str";
 		System.out.println(b);
 	}
+
+	@Test
+	public void testBoolean(){
+		Boolean flag = null;
+		if (flag){
+			System.out.println("true");
+		}else{
+			System.out.println("false");
+		}
+	}
+
 }

@@ -30,6 +30,14 @@ public class SearchTest {
 		return -1;
 	}
 
+	/**
+	 * 递归实现二分查找
+	 * @param a
+	 * @param low
+	 * @param high
+	 * @param value
+	 * @return
+	 */
 	public static int recursionBinarySearch(int[] a, int low, int high, int value){
 		if (low > high)
 			return -1;
@@ -65,7 +73,7 @@ public class SearchTest {
 		return -1;
 	}
 
-	//易于理解的另一种写法
+	//易于理解的另一种写法, 两数对比, 大于小于两种不需要额外处理, 等于的情况需要特殊处理
 	public static int binarySearchFor1stMatch1(int arr[] , int value){
 		int low = 0;
 		int high = arr.length - 1;
@@ -77,6 +85,7 @@ public class SearchTest {
 			}else if(arr[mid] < value){
 				low = mid + 1;
 			}else{
+				// mid = 0 已经是第一个, arr[mid-1] != value 现在的就是第一个符合的
 				if (mid == 0 || arr[mid-1] != value){
 					return mid;
 				}else{
@@ -102,6 +111,32 @@ public class SearchTest {
 				low = mid + 1;
 			}else{
 				high = mid - 1;
+			}
+			turns ++;
+		}
+		System.out.println("binarySearchForLastMatch takes turns: " + turns);
+		if (arr[high] == value)
+			return low;
+		return -1;
+	}
+
+	public static int binarySearchForLastMatch1(int arr[] , int value){
+		int low = 0;
+		int high = arr.length - 1;
+		int turns = 0;
+		while (low <= high){
+			int mid = low + (high - low) / 2;
+			if (arr[mid] < value){		//等于value的时候也继续往前找,前面的数 <= value
+				low = mid + 1;
+			}else if (arr[mid] > value){
+				high = mid - 1;
+			}else{
+				// 已经是最后一个 || 后一个不是要查找的值 => 当前值就是最后一个等于value的
+				if (mid == arr.length - 1 || arr[mid +1] != value){
+					return mid;
+				}else{
+					low = mid + 1;
+				}
 			}
 			turns ++;
 		}
@@ -166,9 +201,10 @@ public class SearchTest {
 		double square = low + (high - low) / 2;
 		int loop = 0;
 		while(low <= high && loop ++ < 10){
-			if (square * square == n){
+			double power = square * square;
+			if (power == n){
 				break;
-			}else if (square * square > n){
+			}else if (power > n){
 				high = square;
 			}else{
 				low = square;
@@ -178,15 +214,56 @@ public class SearchTest {
 		return square;
 	}
 
+	/**
+	 * 查找数组中第K大的元素
+	 * @param arr
+	 * @param k
+	 * @return
+	 */
+	public static int searchTopK(int[] arr, int k){
+		return searchTopK0(arr, 0, arr.length -1 , k);
+	}
+
+	public static int searchTopK0(int[] arr, int start, int end, int k){
+		int mid = partition(arr, start, end);
+		int part = mid - start + 1;
+		if (part == k){
+			return arr[mid];
+		}else if (part > k){
+			System.out.println("往左找");
+			return searchTopK0(arr, start, mid-1, k);
+		}else{
+			System.out.println("往右找");
+			return searchTopK0(arr, mid+1, end, k-part);
+		}
+	}
+
+	public static int partition(int[] arr, int start, int end){
+		int pivot = arr[end];
+		int mid = start;
+		for (int i = start; i <= end; i++) {
+			if (arr[i] < pivot){
+				int temp = arr[mid];
+				arr[mid++] = arr[i];
+				arr[i] = temp;
+			}
+		}
+
+		arr[end] = arr[mid];
+		arr[mid] = pivot;
+		return mid;
+	}
+
 	public static void main(String[] args) {
-		int arr[] = new int[]{1,2,3,4,5,6,7,8,9,10};
+		int arr[] = new int[]{6,9,4,3,2,1,5,8,7};
 //		System.out.println(recursionBinarySearch(arr, 0, arr.length, 4));
 
 //		System.out.println(square(500000));
 
-		arr = new int[]{1,3,4,5,6,8,8,8,11,18};
-		System.out.println(binarySearchFor1stMatch(arr, 8));
-		System.out.println(binarySearchForLastMatch(arr, 8));
-		System.out.println(binarySearch(arr, 8));
+//		arr = new int[]{1,3,4,5,6,8,8,8,11,18};
+//		System.out.println(binarySearchFor1stMatch(arr, 8));
+//		System.out.println(binarySearchForLastMatch(arr, 8));
+//		System.out.println(binarySearch(arr, 8));
+		System.out.println(searchTopK(arr, 3));
 	}
 }

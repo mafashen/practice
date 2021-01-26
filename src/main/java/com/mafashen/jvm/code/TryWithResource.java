@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * Try With Resource 可以算是一个语法糖, 在编译时会生成finally, 或者在finally里增加调用 close 方法的指令 与 异常表
+ *
  * @author mafashen
  * created on 2018/11/19.
  */
@@ -68,6 +70,13 @@ public class TryWithResource {
 56 invokevirtual #9 <com/mafashen/jvm/code/TryWithResource$Foo.close>
 59 aload 4
 61 athrow
+
+Exception table:
+         from    to  target type
+            12    22    22   Class java/lang/Throwable
+            37    41    44   Class java/lang/Throwable
+            12    29    27   any
+
 */
 	}
 

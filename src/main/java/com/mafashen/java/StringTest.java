@@ -10,8 +10,20 @@ import java.io.ObjectOutputStream;
  */
 public class StringTest {
 
-	public static void main(String[] args) throws IOException {
-//		String s1=new String("StringTest");
+	public static void main(String[] args)  {
+		String a = "a1";
+		String b = "b1";
+		String c = a + b;
+		String d = new String("ab");
+		System.out.println(a + b );
+
+		while(true){
+
+		}
+	}
+
+	public void testIntern() throws IOException{
+		//		String s1=new String("StringTest");
 //		System.out.println(s1.intern()==s1); //false
 
 		String s2 = new StringBuilder().append("String").append("Test").toString(); //toString => new String
@@ -27,4 +39,5 @@ public class StringTest {
 		// 读出当前对象的二进制流信息
 		System.out.println(bos.size());
 	}
+
 }

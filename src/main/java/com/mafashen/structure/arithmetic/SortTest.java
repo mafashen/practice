@@ -36,16 +36,19 @@ public class SortTest {
 	 */
 	public static void selectSort(int arr[] , int n){
 		for (int i = 0; i < n; i++) {
-			int min = arr[i];
-			int k = i;
+			int min = arr[i]; // 初始时假设未排序区第一个元素为最小值
+			int k = i; // 最小值的下标
 			for (int j = i+1; j < n-i; j++) {
 				if (arr[j] < min){
 					min = arr[j];
 					k = j;
 				}
 			}
-			arr[k] = arr[i];
-			arr[i] = min;
+			// 交换
+			if (k != i){
+				arr[k] = arr[i];
+				arr[i] = min;
+			}
 		}
 	}
 
@@ -57,16 +60,16 @@ public class SortTest {
 	public static void insertSort(int arr[] , int n){
 		for (int i = 1; i < n; i++) {
 			int value = arr[i]; //未排序区第一个数
-			int j = i -1;
+			int j = i - 1; //已排序区最后一个数下标
 			//遍历已排序区,插入到合适位置,之后的向后移动一位
 			for (; j >= 0; j--) {
-				if (arr[j] > value){
-					arr[j+1] = arr[j];
+				if (arr[j] > value){ // 从已排序区最后一位向前遍历
+					arr[j+1] = arr[j]; // 移动数据
 				}else{
 					break;
 				}
 			}
-			arr[j+1] = value;
+			arr[j+1] = value; // 插入
 		}
 	}
 
@@ -106,18 +109,20 @@ public class SortTest {
 			}
 		}
 
+		// 左边剩余数据
 		int left = i, right = mid;
 		if (j <= end){
+			// 右边剩余
 			left = j; right = end;
 		}
 		for (;left <= right; left++){
 			temp[k++] = arr[left];
 		}
+		// 拷贝回原数组
 		for (int l = 0; l <= end - start; l++) {
 			arr[start+l] = temp[l];
 		}
 	}
-
 
 	/**
 	 * 快速排序
@@ -245,7 +250,7 @@ public class SortTest {
 
 	public static void main(String[] args) {
 		int arr[] = new int[]{8,5,3,6,9,4,7,1,2,7,9,20};
-		rankSort(arr, arr.length);
+		quickSort(arr, arr.length);
 		for (int i : arr) {
 			System.out.print(i);
 		}

@@ -19,12 +19,12 @@ public class AdvisorBean {
 
 	}
 
-	@Before("pointCut()")
+//	@Before("pointCut()")
 	public void before(){
 		System.out.println("before pointCut");
 	}
 
-	@After("pointCut()")
+//	@After("pointCut()")
 	public void after(){
 		System.out.println("after pointCut");
 	}

@@ -19,7 +19,7 @@
     </appender>
 
     <root>
-        <level value="INFO" />
+        <level value="WARN" />
         <appender-ref ref="MAIN_FILE" />
         <appender-ref ref="CONSOLE" />
     </root>

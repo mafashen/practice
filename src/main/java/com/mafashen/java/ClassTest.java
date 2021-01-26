@@ -1,12 +1,11 @@
 package com.mafashen.java;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.google.common.collect.Sets;
+
+import java.util.List;
+import java.util.Set;
 
 public class ClassTest {
 
